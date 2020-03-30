@@ -17,7 +17,8 @@ public class Comparator1 {
 		list.add(new Score("wanggang", 90L, 96L));
 		list.add(new Score("xiaoma", 85L, 70L));
 
-		Collections.sort(list, Comparator.comparing(Score::getYuwen).thenComparing(Score::getShuxue));
+		Collections.sort(list, Comparator.comparing(Score::getYuwen)
+				.thenComparing(Score::getShuxue));
 		list.forEach(System.out::println);
 
 		Comparator c1 = Comparator.comparing(Score::getYuwen).reversed();

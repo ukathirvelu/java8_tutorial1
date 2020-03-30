@@ -2,50 +2,51 @@ package com.cei.java8.tutorial.misc;
 
 public class Math1 {
 
-    public static void main(String[] args) {
-	testMathExact();
-	testUnsignedInt();
-    }
-
-    private static void testUnsignedInt() {
-	try {
-	    Integer.parseUnsignedInt("-123", 10);
-	} catch (NumberFormatException e) {
-	    System.out.println(e.getMessage());
+	public static void main(String[] args) {
+		testMathExact();
+		testUnsignedInt();
 	}
 
-	long maxUnsignedInt = (1l << 32) - 1;
-	System.out.println(maxUnsignedInt);
+	private static void testUnsignedInt() {
+		try {
+			Integer.parseUnsignedInt("-123", 10);
+		} catch (NumberFormatException e) {
+			System.out.println(e.getMessage());
+		}
 
-	String string = String.valueOf(maxUnsignedInt);
+		long maxUnsignedInt = (1l << 32) - 1;
+		System.out.println(maxUnsignedInt);
 
-	int unsignedInt = Integer.parseUnsignedInt(string, 10);
-	System.out.println(unsignedInt);
+		String string = String.valueOf(maxUnsignedInt);
 
-	String string2 = Integer.toUnsignedString(unsignedInt, 10);
-	System.out.println(string2);
+		int unsignedInt = Integer.parseUnsignedInt(string, 10);
+		System.out.println(unsignedInt);
 
-	try {
-	    Integer.parseInt(string, 10);
-	} catch (NumberFormatException e) {
-	    System.err.println("could not parse signed int of " + maxUnsignedInt);
-	}
-    }
+		String string2 = Integer.toUnsignedString(unsignedInt, 10);
+		System.out.println(string2);
 
-    private static void testMathExact() {
-	System.out.println(Integer.MAX_VALUE);
-	System.out.println(Integer.MAX_VALUE + 1);
-
-	try {
-	    Math.addExact(Integer.MAX_VALUE, 1);
-	} catch (ArithmeticException e) {
-	    System.err.println(e.getMessage());
+		try {
+			Integer.parseInt(string, 10);
+		} catch (NumberFormatException e) {
+			System.err
+					.println("could not parse signed int of " + maxUnsignedInt);
+		}
 	}
 
-	try {
-	    Math.toIntExact(Long.MAX_VALUE);
-	} catch (ArithmeticException e) {
-	    System.err.println(e.getMessage());
+	private static void testMathExact() {
+		System.out.println(Integer.MAX_VALUE);
+		System.out.println(Integer.MAX_VALUE + 1);
+
+		try {
+			Math.addExact(Integer.MAX_VALUE, 1);
+		} catch (ArithmeticException e) {
+			System.err.println(e.getMessage());
+		}
+
+		try {
+			Math.toIntExact(Long.MAX_VALUE);
+		} catch (ArithmeticException e) {
+			System.err.println(e.getMessage());
+		}
 	}
-    }
 }

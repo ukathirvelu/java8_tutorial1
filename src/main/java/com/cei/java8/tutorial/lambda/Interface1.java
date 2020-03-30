@@ -5,34 +5,34 @@ package com.cei.java8.tutorial.lambda;
  */
 public class Interface1 {
 
-    interface Formula {
+	interface Formula {
 
-	double calculate(int a);
+		double calculate(int a);
 
-	default double sqrt(int a) {
-	    System.out.println("sqrt方法：" + a);
-	    return Math.sqrt(positive(a));
+		default double sqrt(int a) {
+			System.out.println("sqrt方法：" + a);
+			return Math.sqrt(positive(a));
+		}
+
+		static int positive(int a) {
+			return a > 0 ? a : 0;
+		}
 	}
 
-	static int positive(int a) {
-	    return a > 0 ? a : 0;
+	public static void main(String[] args) {
+		Formula formula1 = new Formula() {
+
+			@Override
+			public double calculate(int a) {
+				return sqrt(a * 100);
+			}
+		};
+
+		System.out.println(formula1.calculate(100)); // 100.0
+		System.out.println(formula1.sqrt(-23)); // 0.0
+		System.out.println(Formula.positive(-4)); // 0.0
+
+		// Formula formula2 = (a) -> sqrt( a * 100);
 	}
-    }
-
-    public static void main(String[] args) {
-	Formula formula1 = new Formula() {
-
-	    @Override
-	    public double calculate(int a) {
-		return sqrt(a * 100);
-	    }
-	};
-
-	System.out.println(formula1.calculate(100)); // 100.0
-	System.out.println(formula1.sqrt(-23)); // 0.0
-	System.out.println(Formula.positive(-4)); // 0.0
-
-	// Formula formula2 = (a) -> sqrt( a * 100);
-    }
 
 }

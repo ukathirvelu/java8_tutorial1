@@ -2,9 +2,9 @@ package com.cei.java8.tutorial.nashron;
 
 public class SuperRunner implements Runnable {
 
-    @Override
-    public void run() {
-	System.out.println("super run");
-    }
+	@Override
+	public void run() {
+		System.out.println("super run");
+	}
 
 }

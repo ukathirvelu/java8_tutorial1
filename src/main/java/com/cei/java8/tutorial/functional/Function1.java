@@ -33,10 +33,12 @@ public class Function1 {
 		BiFunction<String, Long, Score> biFunction1 = Score::new;
 		System.out.println("biFunction1" + biFunction1.apply("Tom", 98L));
 
-		Function<Integer, Function<Integer, Integer>> function2 = x -> y -> x + y;
+		Function<Integer, Function<Integer, Integer>> function2 = x -> y -> x
+				+ y;
 		System.out.println("function2" + function2.apply(2).apply(3));
 
-		Function<Integer, Function<Integer, Function<Integer, Integer>>> function3 = x -> y -> z -> (x + y) * z;
+		Function<Integer, Function<Integer, Function<Integer, Integer>>> function3 = x -> y -> z -> (x
+				+ y) * z;
 		System.out.println("function3" + function3.apply(1).apply(2).apply(3));
 
 	}

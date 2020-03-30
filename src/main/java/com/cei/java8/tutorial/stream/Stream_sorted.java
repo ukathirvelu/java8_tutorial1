@@ -10,7 +10,7 @@ public class Stream_sorted {
 
 	public static void main(String[] args) {
 
-//        test1();
+		// test1();
 		test2();
 	}
 
@@ -28,8 +28,8 @@ public class Stream_sorted {
 		stringCollection.stream().sorted().forEach(System.out::println);
 		System.out.println(stringCollection);
 
-		stringCollection.stream().map(String::toUpperCase).sorted((a, b) -> b.compareTo(a))
-				.forEach(System.out::println);
+		stringCollection.stream().map(String::toUpperCase)
+				.sorted((a, b) -> b.compareTo(a)).forEach(System.out::println);
 		// "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "AAA2", "AAA1"
 	}
 
@@ -40,9 +40,11 @@ public class Stream_sorted {
 		list.add(new Score("wanggang", 90L, 96L));
 		list.add(new Score("xiaoma", 85L, 70L));
 
-		list.stream().sorted(Comparator.comparing(Score::getYuwen)).forEach(System.out::println);
+		list.stream().sorted(Comparator.comparing(Score::getYuwen))
+				.forEach(System.out::println);
 
-		list.stream().sorted(Comparator.comparing(Score::getYuwen).reversed()).forEach(System.out::println);
+		list.stream().sorted(Comparator.comparing(Score::getYuwen).reversed())
+				.forEach(System.out::println);
 	}
 
 }
