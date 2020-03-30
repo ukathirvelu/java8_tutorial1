@@ -220,22 +220,22 @@ There are three cases of method references:
 4) Class instance object + static method (invalid, incorrect writing)
     public static void main(String[] args) {
 
-        // 1)?+????
+        // 1
         BiConsumer<LinkedHashSet, Object> biConsumer1 = LinkedHashSet::add;
         LinkedHashSet s1 = new LinkedHashSet();
         biConsumer1.accept(s1, "aaa");
         System.out.println(s1);
 
-        // 2)?+????
+        // 2
         BiConsumer<String, Long> biConsumer2 = Utils::concatStatic;
         biConsumer2.accept("first_param", 6L);
 
-        // 3)?????+????
+        // 3
         BiConsumer<String, Long> biConsumer3 = new Utils()::concat;
         biConsumer3.accept("first_param", 7L);
 
-        // 4)?????+????
-        // Error:(35, 48) java: ?????? ,??????????
+        // 4
+        // Error:(35, 48)
         // BiConsumer<String, Long> biConsumer4 = new Utils()::concatStatic;
         // biConsumer4.accept("first_param", 8L);
 
@@ -243,7 +243,7 @@ There are three cases of method references:
 Array constructor that takes int parameters
 
 IntFunction<int[]> arrayMaker = int[]::new;
-int[] array = arrayMaker.apply(10) // ???? int[10]
+int[] array = arrayMaker.apply(10) // int[10]
 
 ## Built-in Functional Interfaces
 The JDK 1.8 API provides many built-in functional interfaces. Some of them are from older versions of Java, such as Comparatoror Runnable. By @FunctionalInterfaceannotation expand those already existing interfaces to achieve lambda support.
@@ -318,13 +318,11 @@ list.add(new Score("wanggang", 90L, 96L));
 list.add(new Score("xiaoma", 85L, 70L));
 
 Collections.sort(list, Comparator.comparing(Score::getYuwen).thenComparing(Score::getShuxue));
-System.out.println("????????,????,???????");
 list.forEach(System.out::println);
 
 Comparator c1 = Comparator.comparing(Score::getYuwen).reversed();
 Comparator c2 = Comparator.comparing(Score::getShuxue).reversed();
 Collections.sort(list, c1.thenComparing(c2));
-System.out.println("????????,????,???????");
 list.forEach(System.out::println);
 Other functional interfaces
 Like BinaryOperator, etc.
@@ -350,8 +348,8 @@ java.util.StreamYou can perform one or more operations on the element list. Stre
 
 Streams is very powerful, so I wrote a separate article about Java 8 Streams Tutorial . Codebase Sequency
 
-????:filter?map?mapToInt?mapToLong?mapToDouble?flatMap?sorted?distinct?limit?skip?of?iterate
-????:forEach?count?collect?reduce?toArray?anyMatch?allMatch?noneMatch?findAny?findFirst?max?min
+filter?map?mapToInt?mapToLong?mapToDouble?flatMap?sorted?distinct?limit?skip?of?iterate
+forEach?count?collect?reduce?toArray?anyMatch?allMatch?noneMatch?findAny?findFirst?max?min
 Primitive type specialization stream: IntStream, LongStream, DoubleStream
 
 ### Filter
@@ -517,7 +515,7 @@ Optional<Student> optional1 = studentList.stream().collect(Collectors.maxBy(Comp
 optional1.ifPresent(System.out::println);
 
 
-// reducing???,???:???????:????????:????
+// reducing
 int sum = studentList.stream().collect(Collectors.reducing(0, Student::getAge, Integer::sum));
 
 
@@ -706,7 +704,6 @@ System.out.println(xmas);   // 2014-12-24
 Local datetime
 LocalDateTime represents the date and time. It contains an example of the date and time above. LocalDateTimeIt is immutable and it works similarly to LocalTime and LocalDate. We can retrieve some fields using datetime:
 
-??:com.winterbe.java8.samples.time.LocalDateTime1
 
 LocalDateTime sylvester = LocalDateTime.of(2014, Month.DECEMBER, 31, 23, 59, 59);
 
